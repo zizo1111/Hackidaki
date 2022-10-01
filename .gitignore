@@ -1,30 +1,30 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+/backend/__pycache__/
+/backend/*.py[cod]
+/backend/*$py.class
 
 # C extensions
-*.so
+/backend/*.so
 
 # Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+/backend/.Python
+/backend/build/
+/backend/develop-eggs/
+/backend/dist/
+/backend/downloads/
+/backend/eggs/
+/backend/.eggs/
+/backend/lib/
+/backend/lib64/
+/backend/parts/
+/backend/sdist/
+/backend/var/
+/backend/wheels/
+/backend/share/python-wheels/
+/backend/*.egg-info/
+/backend/.installed.cfg
+/backend/*.egg
+/backend/MANIFEST
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -37,50 +37,50 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
+/backend/htmlcov/
+/backend/.tox/
+/backend/.nox/
+/backend/.coverage
+/backend/.coverage.*
+/backend/.cache
+/backend/nosetests.xml
+/backend/coverage.xml
+/backend/*.cover
+/backend/*.py,cover
+/backend/.hypothesis/
+/backend/.pytest_cache/
+/backend/cover/
 
 # Translations
 *.mo
 *.pot
 
 # Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+/backend/*.log
+/backend/local_settings.py
+/backend/db.sqlite3
+/backend/db.sqlite3-journal
 
 # Flask stuff:
-instance/
-.webassets-cache
+/backend/instance/
+/backend/.webassets-cache
 
 # Scrapy stuff:
-.scrapy
+/backend/.scrapy
 
 # Sphinx documentation
-docs/_build/
+/backend/docs/_build/
 
 # PyBuilder
-.pybuilder/
-target/
+/backend/.pybuilder/
+/backend/target/
 
 # Jupyter Notebook
-.ipynb_checkpoints
+/backend/.ipynb_checkpoints
 
 # IPython
-profile_default/
-ipython_config.py
+/backend/profile_default/
+/backend/ipython_config.py
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
@@ -110,23 +110,23 @@ ipython_config.py
 .pdm.toml
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
+/backend/__pypackages__/
 
 # Celery stuff
-celerybeat-schedule
-celerybeat.pid
+/backend/celerybeat-schedule
+/backend/celerybeat.pid
 
 # SageMath parsed files
 *.sage.py
 
 # Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+/backend/.env
+/backend/.venv
+/backend/env/
+/backend/venv/
+/backend/ENV/
+/backend/env.bak/
+/backend/venv.bak/
 
 # Spyder project settings
 .spyderproject
@@ -158,3 +158,32 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+#
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/frontend-react/node_modules
+/frontend-react/.pnp
+/frontend-react/.pnp.js
+
+# testing
+/frontend-react/coverage
+
+# production
+/frontend-react/build
+
+# misc
+/frontend-react/.DS_Store
+/frontend-react/.env.local
+/frontend-react/.env.development.local
+/frontend-react/.env.test.local
+/frontend-react/.env.production.local
+/
+/frontend-react/npm-debug.log*
+/frontend-react/yarn-debug.log*
+/frontend-react/yarn-error.log*
+/frontend-react/dist/
+/frontend-react/.nvmrc
+/backend/censor_server/backend/__pycache__/
+/.log/
