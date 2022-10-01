@@ -10,11 +10,26 @@
         "48": "icon.png",
         "128": "icon.png"
     },
-    "content_scripts": [{
-        "matches": ["<all_urls>"],
-        "js": ["doTheJob.js"],
-        "exclude_globs": ["*options*"],
-        "run_at": "document_end"
-    }],
-    "permissions": ["activeTab", "storage", "tabs"]
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "doTheJob.js"
+            ],
+            "css": [
+                "styles.css"
+            ],
+            "exclude_globs": [
+                "*options*"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "permissions": [
+        "activeTab",
+        "storage",
+        "tabs"
+    ]
 }

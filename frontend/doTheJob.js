@@ -28,8 +28,16 @@ function doMagic() {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (parseFloat(data["value"]) > 0.5)
-                    text[i].innerHTML = "WARNING 18+: " + text[i].innerHTML
+                if (parseFloat(data["value"]) > 0.5) {
+                    const button = document.createElement('button')
+                    button.classList.add("button")
+                    button.addEventListener("click", () => alert("this might contain hate speech!"))
+                    button.innerText = "WARNING 18+"
+                    text[i].before(button)
+                    const newElement = document.createElement('span')
+                    newElement.innerHTML = text[i].textContent.replace(/([\s\S]*)/gi, '<span class="spoiler">$1</span>')
+                    text[i].replaceWith(newElement)
+                }
             })
             .catch(error => {
                 console.log(error)
