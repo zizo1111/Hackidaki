@@ -1,0 +1,3 @@
+[submodule "src/detoxify"]
+	path = src/detoxify
+	url = git@github.com:zizo1111/detoxify.git
