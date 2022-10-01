@@ -16,21 +16,26 @@ function doMagic() {
             continue
         }
 
-
-
-
-        console.log("Running " + i);
-        $.ajax('http://127.0.0.1:5000/api', {
-            data: '{ "sentence": "' + html_content + '"}',
-            type: "POST",
-            success: function(data) {
+        fetch('http://127.0.0.1:5000/api', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                sentence: html_content
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
                 console.log(data);
                 if (parseFloat(data["value"]) > 0.5)
                     text[i].innerHTML = "WARNING 18+: " + text[i].innerHTML
-            }
-        });
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 
-console.log("In extension!");
+// console.log("In extension!");
 setTimeout(doMagic, 10000);
