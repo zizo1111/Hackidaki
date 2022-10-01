@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "Censorship",
+    "description": "Free speech is bad for your mental health.",
+    "version": "1.0.0",
+    "author": "Hakidaki",
+    "icons": {
+        "16": "icon.png",
+        "32": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["jquery.min.js", "doTheJob.js"],
+        "exclude_globs": ["*options*"],
+        "run_at": "document_end"
+    }],
+    "permissions": ["activeTab", "storage", "tabs"]
+}
