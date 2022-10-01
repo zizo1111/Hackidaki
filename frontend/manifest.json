@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Censorship",
     "description": "Free speech is bad for your mental health.",
     "version": "1.0.0",
@@ -31,5 +31,11 @@
         "activeTab",
         "storage",
         "tabs"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": [
+        "<all_urls>"
     ]
 }

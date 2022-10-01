@@ -21,3 +21,8 @@
   background-color: inherit;
   color: inherit;
 }
+
+.highlighted{
+  text-decoration: underline wavy red;
+}
+
