@@ -1,5 +1,5 @@
-from src.text_extractor import TextExractor
-from src.detoxify.detoxify.detoxify import Detoxify
+from backend.text_extractor import TextExractor
+from detoxify.detoxify import Detoxify
 
 
 class HateRecognizer:

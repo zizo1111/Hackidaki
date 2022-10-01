@@ -1,14 +1,14 @@
 from flask import Flask, jsonify
 from flask import request
 from flask_cors import CORS, cross_origin
-from detoxify import Detoxify
+from backend.hate_recognizer import HateRecognizer
 from flask import make_response
 
 app = Flask(__name__)
 cors = CORS(app)
 
 app.config['CORS_HEADERS'] = 'Content-Type'
-
+hr = HateRecognizer()
 
 def _build_cors_preflight_response():
     response = make_response()
@@ -34,7 +34,11 @@ def hello_world():
         try:
             request_data = request.get_json(force=True)
             sentence = request_data["sentence"]
-            results = Detoxify('unbiased').predict(sentence)
+            results = hr.predict_hate(sentence)
+
+            ## for images
+            # results = hr.predict_hate_img(img)
+
             hate_score = results['toxicity']
             print(f'sentence: {sentence}; score: {hate_score}')
         except:
