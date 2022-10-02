@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Censorship",
+    "name": "SulliOne",
     "description": "Free speech is bad for your mental health.",
     "version": "1.0.0",
     "author": "Hakidaki",
@@ -16,6 +16,7 @@
                 "<all_urls>"
             ],
             "js": [
+                "jquery.min.js",
                 "doTheJob.js"
             ],
             "css": [

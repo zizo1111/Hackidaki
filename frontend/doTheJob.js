@@ -1,3 +1,7 @@
+function isDOMLoaded() {
+    return document.readyState == 'complete';
+}
+
 const search = async (text, element) => {
     console.log('search', text)
     fetch('http://127.0.0.1:5000/api', {
@@ -11,7 +15,7 @@ const search = async (text, element) => {
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if (parseFloat(data["value"]) > 0.5) {
                 element.classList.add("highlighted")
                 element.classList.add("arrowpopup")
@@ -146,12 +150,12 @@ function doMagic() {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (parseFloat(data["value"]) > 0.5) {
                     const button = document.createElement('button')
                     button.classList.add("button")
                     button.addEventListener("click", () => alert("this might contain hate speech!"))
-                    button.innerText = "WARNING 18+"
+                    button.innerText = "WARNING This might be a hate content"
                     text[i].before(button)
                     const newElement = document.createElement('span')
                     newElement.innerHTML = text[i].textContent.replace(/([\s\S]*)/gi, '<span class="spoiler">$1</span>')
@@ -162,6 +166,49 @@ function doMagic() {
                 console.log(error)
             })
     }
-}
+};
 
-setTimeout(doMagic, 10000);
+function doImgMagic() {
+
+    if (isDOMLoaded()) {
+
+
+        // check if reloaded
+        // console.info(performance.getEntriesByType("navigation")[0].type);
+        if (performance.getEntriesByType("navigation")[0].type == "reload") {
+            console.info("This page is reloaded");
+        } else {
+            console.info("This page is not reloaded");
+        }
+        console.log("After timeout Img!");
+
+        const el1 = document.querySelectorAll('div[aria-label="Image"]');
+        for (let i = 0; i < el1.length; i++) {
+            // console.info(el1[i]);
+            const el1_c = el1[i].querySelector('div');
+
+            const el1_img = el1[i].querySelector('img');
+            // console.log(el1_img.getAttribute('src'));
+            html_content = el1_img.getAttribute('src');
+            // console.log("Running " + i);
+            $.ajax('http://127.0.0.1:5000/api', {
+                data: '{ "sentence": "' + html_content + '"}',
+                type: "POST",
+                success: function (data) {
+                    if (parseFloat(data["value"]) > 0.5) {
+                        el1_img.setAttribute('src', 'https://lh3.googleusercontent.com/pw/AL9nZEXbKFIs2AAuALvVWhlAoFUUDZ7kvfRBHOcM4CmM6FjgWxjFCUyytThDpny1XLNzLQjumpXJLEgSLTUMBwrbZnMljdKCfyKrEyNE_4OadWVS722vunNZ6JTcUtZAo07bhKPYsZdWkrvv3EbPDrNJYg=s500-no?authuser=0');
+                        var content = el1_img.innerHTML;
+                        el1_img.innerHTML = content;
+                        el1_c.style.backgroundImage = "url('https://lh3.googleusercontent.com/pw/AL9nZEXbKFIs2AAuALvVWhlAoFUUDZ7kvfRBHOcM4CmM6FjgWxjFCUyytThDpny1XLNzLQjumpXJLEgSLTUMBwrbZnMljdKCfyKrEyNE_4OadWVS722vunNZ6JTcUtZAo07bhKPYsZdWkrvv3EbPDrNJYg=s500-no?authuser=0')";
+                        // console.info(el1_img);
+                    }
+                },
+            });
+
+            // console.info(el1_img);
+            // console.info(el1_c);
+        }
+    }
+};
+setTimeout(doMagic, 5000);
+setTimeout(doImgMagic, 5000);

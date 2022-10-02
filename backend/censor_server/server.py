@@ -34,13 +34,28 @@ def hello_world():
         try:
             request_data = request.get_json(force=True)
             sentence = request_data["sentence"]
-            results = hr.predict_hate(sentence)
+            print(sentence)
+            skip = False
+            if sentence[0:4] == "http":
 
-            ## for images
-            # results = hr.predict_hate_img(img)
+                ## filter out twitters default images
+                if 'twimg' in sentence and 'default' in sentence:
+                    skip = True
+                    print('skipping  ' , sentence)
+                
+                if not skip:
+                    print('predicting')
+                    results = hr.predict_hate_img(sentence)
+                    print('predicted')
+                    print(results)
+            else:
+                results = hr.predict_hate(sentence)
 
-            hate_score = results['toxicity']
-            print(f'sentence: {sentence}; score: {hate_score}')
+            if len(results) > 0:
+                hate_score = results['toxicity']
+            
+            else:
+                hate_score = 0
         except:
             hate_score = 0
         order = {'value': str(hate_score)}
