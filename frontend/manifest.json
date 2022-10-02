@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "SulliOne",
-    "description": "Free speech is bad for your mental health.",
+    "description": "AI-powered web-extension protecting users from exposure to hate speech.",
     "version": "1.0.0",
     "author": "Hakidaki",
     "icons": {
